@@ -118,3 +118,5 @@ button {
   background-image: url('/assets/design/razerleaf.png');
   background-size: cover;
 }
+
+/* div class start screen display none then in JS startscree.onload = startscreens.style / const start */

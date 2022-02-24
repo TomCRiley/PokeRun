@@ -4,6 +4,10 @@ let width = 15
 let pokeSpriteLocation = 202; //starting position upon load
 let destroyedPokeballs = []; //where pokeballs go to die after being shot
 
+//*-------------------------------!start game!-------------------------------------
+// document.addEventListener('DOMContentLoaded', init);
+document.querySelector('#start-game').addEventListener('click', pokeballAttack);
+
 //* -------------------------------!Generate Grid!-----------------------------------
 for (let i = 0; i < 225; i++) { //generate grid
   const gridDivs = document.createElement('div');
@@ -73,7 +77,6 @@ function pokeballAttack() {
   // remove();
 
   if (rightScreen && goingRight) {
-    // console.log('rightscreen true & going right')
     for (let i = 0; i < pokeballPlacement.length; i++) {
       pokeballPlacement[i] += width +1;
       travel = -1;
@@ -82,7 +85,6 @@ function pokeballAttack() {
   }
 
   if (leftScreen && !goingRight) {
-    // console.log('leftscreen true & not going right')
     for (let i = 0; i < pokeballPlacement.length; i++) {
       pokeballPlacement[i] += width -1;
       travel = 1;
@@ -129,10 +131,7 @@ function shoot(e) {
     divs[currentVineShotIndex].classList.remove('vine');
     currentVineShotIndex -= width;
     divs[currentVineShotIndex].classList.add('vine');
-    console.log('hello')
-    console.log(currentVineShotIndex, divs[currentVineShotIndex]);
-    pokeballPlacement.includes(currentVineShotIndex);
-    if (pokeballPlacement.includes(currentVineShotIndex)) {
+    if (pokeballPlacement.includes(currentVineShotIndex) && divs[currentVineShotIndex].classList.contains('pokeball'))  {
         divs[currentVineShotIndex].classList.remove('vine');
         divs[currentVineShotIndex].classList.remove('pokeball');
         divs[currentVineShotIndex].classList.add('shot');
@@ -146,6 +145,7 @@ function shoot(e) {
       destroyedPokeballs.push(removePokeballs);
     }
  }
+
   //spacebar to fire vines
   switch(e.keyCode) {
     case 32: {
@@ -154,8 +154,15 @@ function shoot(e) {
     }  
     } 
 }
-
 document.addEventListener('keydown', shoot);
+
+const audio = {
+  start: new Audio("..//assets/audio/Battle! (Wild Pokémon).wav"),
+};
+audio.play();
+
+const startButton = document.querySelector("#start");
+startButton.addEventListener("click", );
 //* ------------------------------------------------------------------
 //start / stop
 //multiple levels
