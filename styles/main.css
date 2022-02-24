@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Monofett&family=Rammetto+One&family=Shizuru&display=swap');
+* {
+  background-color: lightblue;
+}
+
+header { 
+  display: flex;
+  justify-content: center;
+}
+
+/* pokemon logo image */
+#game-logo {
+  margin: 20px auto;
+  width: 200px;
+}
+
+/* container for both leftside and grid */
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+#left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 350px;
+}
+
+.score-board {
+  font-family: 'Bangers', cursive;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 1px;
+  border-radius: 7px;
+  background-color: lightcoral;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.score {
+  background-color: lightcoral;
+}
+
+.results {
+  color: #FECA04;
+  background-color: lightcoral;
+}
+
+/* buttons container--find way to justify content to the center */
+.start-reset {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+  border: solid black 1px;
+  border-radius: 7px;
+  background-color: lightcoral;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* button styling */
+button {
+  font-family: 'Rammetto One', cursive;
+}
+
+/* .music-stop {
+  display: flex;
+  justify-content: space-evenly;
+} */
+
+/* find way to anchor to the center and bottom of left side */
+/* container */
+.trainer-container {
+  display: flex;
+  justify-content: center;
+}
+
+#poke-trainer {
+  max-height: 350px;
+  padding-top: 10px;
+}
+
+.grid {
+  width: 600px;
+  height: 600px;
+  border: solid black 1px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* margin: 20px auto auto 20px; */
+  display: flex;
+  flex-wrap: wrap;
+} 
+
+.grid div {
+  width: 40px;
+  height: 40px;
+  background-color: #7f9f5488;
+  /* background-image: url('/assets/design/background-grass.png');
+  background-size: contain; */
+}
+
+/* enemy pokeballs */
+.pokeball { 
+  background-image: url('/assets/gifs/rollingpokeball.gif');
+  background-size: cover;
+}
+
+/* users pokemon */
+.pokeSprite {
+  background-image: url('/assets/gifs/bulbasaursprite.gif');
+  background-size: cover;
+}
+
+.vine {
+  background-image: url('/assets/design/razerleaf.png');
+  background-size: cover;
+}
