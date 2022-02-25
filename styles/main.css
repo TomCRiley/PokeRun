@@ -130,18 +130,18 @@ button {
 
 /* enemy pokeballs */
 .pokeball { 
-  background-image: url('./assets/gifs/rollingpokeball.gif');
+  background-image: url('../assets/gifs/rollingpokeball.gif');
   background-size: cover;
 }
 
 /* users pokemon */
 .pokeSprite {
-  background-image: url('./assets/gifs/bulbasaursprite.gif');
+  background-image: url('../assets/gifs/bulbasaursprite.gif');
   background-size: cover;
 }
 
 .vine {
-  background-image: url('./assets/design/razerleaf.png');
+  background-image: url('../assets/design/razerleaf.png');
   background-size: cover;
 }
 
