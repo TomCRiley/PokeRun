@@ -1,26 +1,64 @@
 const grid = document.querySelector('.grid');
-const resultsDisplay = document.querySelector('.results')
-let width = 15
+const resultsDisplay = document.querySelector('.results');
+const muteAudio = document.querySelector('#mute');
+const audio = document.querySelector('audio');
+let width = 15;
 let pokeSpriteLocation = 202; //starting position upon load
 let destroyedPokeballs = []; //where pokeballs go to die after being shot
+let goingRight = true;
+let travel = 1;
+let pokeballId;
+let vineShotId;
+let divs;
 
-//*-------------------------------!start game!-------------------------------------
-// document.addEventListener('DOMContentLoaded', init);
-document.querySelector('#start-game').addEventListener('click', pokeballAttack);
-
-//* -------------------------------!Generate Grid!-----------------------------------
-for (let i = 0; i < 225; i++) { //generate grid
-  const gridDivs = document.createElement('div');
-  grid.appendChild(gridDivs)
-}
-const divs = Array.from(document.querySelectorAll('.grid div'));
-
-//* ------------------------------!Place Pokeball Enemies!---------------------------
-const pokeballPlacement = [
+const defaultPositions = [
   //place enemy pokeballs
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31,
-  32, 33, 34, 35, 36, 37, 38, 39
+  32, 33, 34, 35, 36, 37, 38, 39,
 ];
+
+//*-------------------------------!Initialise the game!---------------------------------
+document.addEventListener('DOMContentLoaded', init);
+
+function start() { //plays battle music upon pressing start button
+  pokeballId = setInterval(pokeballAttack, 1000);
+  toggleMusic();
+}
+
+//*-------------------------------!mute toggle!----------------------------------------
+function toggleMusic () {
+  if (audio.paused === true) {
+    audio.play();
+    muteAudio.innerHTML = 'Mute'
+  } else {
+    audio.pause();
+    muteAudio.innerHTML = "Unmute";
+  }
+}
+
+function init() {
+  //* -------!Generate Grid!----------
+  for (let i = 0; i < 225; i++) {
+    //generate grid
+    const gridDivs = document.createElement("div");
+    grid.appendChild(gridDivs);
+  }
+  divs = Array.from(document.querySelectorAll(".grid div"));
+  //* ------!Place PokeSprite!--------
+  //add sprite to initial starting position
+  divs[pokeSpriteLocation].classList.add("pokeSprite");
+  //* ------!Movement!--------
+  document.addEventListener("keydown", moveUser);
+  document.addEventListener("keydown", shoot);
+  document.querySelector("#start-game").addEventListener("click", start);
+  document.querySelector("#reset-game").addEventListener("click", resetGame);
+  //* ------!mute button!--------
+  muteAudio.addEventListener('click', toggleMusic);
+}
+
+//* ------------------------------!Place Pokeball Enemies!---------------------------
+let pokeballPlacement = [...defaultPositions];
+  
 
 function placePokeBalls() { //place the enemy pokeballs
   //need to loop over pokeballs array?
@@ -38,36 +76,30 @@ function remove() {
   // console.log('removing pokeballs?', pokeballPlacement)
   divs.forEach(div => div.classList.remove('pokeball'));
 }
-//* ----------------------------!Place PokeSprite!-------------------------------------
-//add sprite to initial starting position
-//rewrite as concice arrow func!! 
-divs[pokeSpriteLocation].classList.add('pokeSprite');
 
 //* ----------------------------!Sprite movement!--------------------------------------
+function moveUserSprite(current, newPosition) {
+  pokeSpriteLocation = newPosition;
+  divs[current].classList.remove("pokeSprite"); //removes sprite
+  divs[newPosition].classList.add("pokeSprite");
+}
+
 //make sprite reappear in new location dependent on keypress
 function moveUser(e) {
-  divs[pokeSpriteLocation].classList.remove('pokeSprite') //removes sprite
   switch(e.keyCode) {
     case 37:
-      if (pokeSpriteLocation % width !== 0) pokeSpriteLocation -=1;
+      if (pokeSpriteLocation % width !== 0) moveUserSprite(pokeSpriteLocation, pokeSpriteLocation -= 1);
       break;
     case 39:
-      if (pokeSpriteLocation % width < width -1) pokeSpriteLocation +=1;
+      if (pokeSpriteLocation % width < width -1) moveUserSprite(pokeSpriteLocation, (pokeSpriteLocation += 1));
       break;
-      //add up(38) down(40) cases! 
-      //add case for shooting?
   }
-  divs[pokeSpriteLocation].classList.add('pokeSprite')
 }
-document.addEventListener('keydown', moveUser)
 
 //* -------------------------!Enemy Pokeball movement!--------------------------------
 //func needed to move pokeballs down
 //needs to detect when 0 index pokeball hits left side?
 //same for the right side of the screen?
-let goingRight = true;
-let travel = 1;
-let pokeballId;
 
 function pokeballAttack() {
   //if first ball is on far left column leftScreen is true. 
@@ -116,56 +148,68 @@ function pokeballAttack() {
       clearInterval(pokeballId);
     }
   }
-  // if (destroyedPokeballs.length === placePokeBalls.length) {
-  //   resultsDisplay.innerHTML = "You remain free another day."
-  //   clearInterval(pokeballId);
-  // }
+  if (destroyedPokeballs.length === pokeballPlacement.length) {
+    resultsDisplay.innerHTML = "You remain free another day."
+    clearInterval(pokeballId);
+  }
 }
-pokeballId = setInterval(pokeballAttack, 1000)
 
+//* -------------------------!SHOOT!--------------------------------
 //shoot vines at pokeballs
 function shoot(e) {
-  let vineShotId;
   let currentVineShotIndex = pokeSpriteLocation;
   function shootVine() { //function to move the vine from one div to next
-    divs[currentVineShotIndex].classList.remove('vine');
-    currentVineShotIndex -= width;
-    divs[currentVineShotIndex].classList.add('vine');
-    if (pokeballPlacement.includes(currentVineShotIndex) && divs[currentVineShotIndex].classList.contains('pokeball'))  {
-        divs[currentVineShotIndex].classList.remove('vine');
-        divs[currentVineShotIndex].classList.remove('pokeball');
-        divs[currentVineShotIndex].classList.add('shot');
+    if (currentVineShotIndex > 0) {
+      divs[currentVineShotIndex].classList.remove("vine");
+      currentVineShotIndex -= width;
+      divs[currentVineShotIndex].classList.add("vine");
+      if (
+        pokeballPlacement.includes(currentVineShotIndex) &&
+        divs[currentVineShotIndex].classList.contains("pokeball")
+      ) {
+        divs[currentVineShotIndex].classList.remove("vine");
+        divs[currentVineShotIndex].classList.remove("pokeball");
+        divs[currentVineShotIndex].classList.add("shot");
 
-       setTimeout(() => divs[currentVineShotIndex].classList.remove('shot'), 100);
-       clearInterval(vineShotId);
-      //points = points + 10;
-      //innerhtml = points
+        setTimeout(
+          () => divs[currentVineShotIndex].classList.remove("shot"),
+          100
+        );
+        clearInterval(vineShotId);
 
-      const removePokeballs = pokeballPlacement.indexOf(currentVineShotIndex);
-      destroyedPokeballs.push(removePokeballs);
+        const removePokeballs = pokeballPlacement.indexOf(currentVineShotIndex);
+        destroyedPokeballs.push(removePokeballs);
+        resultsDisplay.innerHTML = destroyedPokeballs.length;
+      }
     }
  }
 
   //spacebar to fire vines
   switch(e.keyCode) {
-    case 32: {
+    case 38: {
     vineShotId = setInterval(shootVine, 100);
-    console.log("vineshot");
     }  
     } 
 }
-document.addEventListener('keydown', shoot);
 
-const audio = {
-  start: new Audio("..//assets/audio/Battle! (Wild Pokémon).wav"),
-};
-audio.play();
-
-const startButton = document.querySelector("#start");
-startButton.addEventListener("click", );
+// * reset variables
+function resetGame() {
+  clearInterval(vineShotId);
+  clearInterval(pokeballId);
+  pokeballPlacement = [...defaultPositions];
+  destroyedPokeballs = [];
+  resultsDisplay.innerHTML = 0;
+  moveUserSprite(pokeSpriteLocation, 202);
+  document.querySelectorAll('.grid div').forEach(el => {
+    el.classList.remove('vine');
+    el.classList.remove('pokeball');
+  });
+  audio.pause();
+}
 //* ------------------------------------------------------------------
 //start / stop
 //multiple levels
 //audio
 //mute button 
+// score counter
 //readME

@@ -5,13 +5,17 @@
 
 header { 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
+
+/* #poke-sprite-logo {
+  margin-right: 60px;
+} */
 
 /* pokemon logo image */
 #game-logo {
   margin: 20px auto;
-  width: 200px;
+  width: 300px;
 }
 
 /* container for both leftside and grid */
@@ -47,6 +51,7 @@ section {
 
 .results {
   color: #FECA04;
+  text-shadow: 0 0 5px blue;
   background-color: lightcoral;
 }
 
@@ -64,6 +69,17 @@ section {
 /* button styling */
 button {
   font-family: 'Rammetto One', cursive;
+}
+
+#start-game, #reset-game {
+  border-radius: 5px;
+  background-color: #FECA04;
+}
+
+/* audio button styling */
+#mute { 
+  border-radius: 60px;
+  background-color: lightseagreen;
 }
 
 /* .music-stop {
