@@ -37,22 +37,22 @@ function toggleMusic () {
 }
 
 function init() {
-  //* -------!Generate Grid!----------
+  //? -------!Generate Grid!----------
   for (let i = 0; i < 225; i++) {
     //generate grid
     const gridDivs = document.createElement("div");
     grid.appendChild(gridDivs);
   }
   divs = Array.from(document.querySelectorAll(".grid div"));
-  //* ------!Place PokeSprite!--------
+  //? ------!Place PokeSprite!--------
   //add sprite to initial starting position
   divs[pokeSpriteLocation].classList.add("pokeSprite");
-  //* ------!Movement!--------
+  //? ------!Movement!--------
   document.addEventListener("keydown", moveUser);
   document.addEventListener("keydown", shoot);
   document.querySelector("#start-game").addEventListener("click", start);
   document.querySelector("#reset-game").addEventListener("click", resetGame);
-  //* ------!mute button!--------
+  //? ------!mute button!--------
   muteAudio.addEventListener('click', toggleMusic);
 }
 
