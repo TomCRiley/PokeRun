@@ -21,7 +21,7 @@ That’s where Is tarted with my most basic attempt at pseudo coding out the log
 ![](https://www.casino-review.co/wp-content/uploads/2017/06/ICR-Space-Invaders-Scientific.jpg)
 
 ## Design
-Turns out, by choosing Pokémon I had a wealth of assets available to use on the internet. By basic it on a particular game, I even got a colour palette to work with. Soft blues and greens are typical in the Pokemon universe and have been largely unchanged for the 25 years the franchise has been around. 
+Turns out, by choosing Pokémon I had a wealth of assets available to use on the internet. By basing it on a particular game, I even got a colour palette to work with. Soft blues and greens are typical in the Pokemon universe and have been largely unchanged for the 25 years the franchise has been around. 
 ![](https://i.pinimg.com/originals/d3/a8/1f/d3a81fefaa257e162b6c025c964f5422.png)
 ![](https://www.spriters-resource.com/resources/sheets/4/3861.png)
 

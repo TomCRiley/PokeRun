@@ -36,30 +36,30 @@ function toggleMusic () {
   }
 }
 
+//*------------------------------------!init!------------------------------------------
 function init() {
-  //? -------!Generate Grid!----------
+  //! -------!Generate Grid!----------
   for (let i = 0; i < 225; i++) {
     //generate grid
     const gridDivs = document.createElement("div");
     grid.appendChild(gridDivs);
   }
   divs = Array.from(document.querySelectorAll(".grid div"));
-  //? ------!Place PokeSprite!--------
+  //! ------!Place PokeSprite!--------
   //add sprite to initial starting position
   divs[pokeSpriteLocation].classList.add("pokeSprite");
-  //? ------!Movement!--------
+  //! ---------!Movement!----------
   document.addEventListener("keydown", moveUser);
   document.addEventListener("keydown", shoot);
   document.querySelector("#start-game").addEventListener("click", start);
   document.querySelector("#reset-game").addEventListener("click", resetGame);
-  //? ------!mute button!--------
+  //! ---------!mute button!----------
   muteAudio.addEventListener('click', toggleMusic);
 }
 
 //* ------------------------------!Place Pokeball Enemies!---------------------------
 let pokeballPlacement = [...defaultPositions];
   
-
 function placePokeBalls() { //place the enemy pokeballs
   //need to loop over pokeballs array?
   // console.log('balls are being placed?', pokeballPlacement)
@@ -96,7 +96,7 @@ function moveUser(e) {
   }
 }
 
-//* -------------------------!Enemy Pokeball movement!--------------------------------
+//* -------------------------------!Enemy Pokeball movement!--------------------------------
 //func needed to move pokeballs down
 //needs to detect when 0 index pokeball hits left side?
 //same for the right side of the screen?
@@ -131,11 +131,10 @@ function pokeballAttack() {
   placePokeBalls();
 
   if (pokeballPlacement.some((pokeball) => pokeball >= 210)) {
-    // resultsDisplay.innerHTML = "You got caught by a trainer!";
     clearInterval(pokeballId);
   }
 
-  //game over (modified pokeballs dodged num)
+  //game over when pokeballs hit pokemon
   if (divs[pokeSpriteLocation].classList.contains('pokeball', 'pokeSprite')) {
     resultsDisplay.innerHTML = "Bulbasaur was caught!!";
     clearInterval(pokeballId);
@@ -154,7 +153,7 @@ function pokeballAttack() {
   }
 }
 
-//* -------------------------!SHOOT!--------------------------------
+//* --------------------------------!SHOOT!--------------------------------
 //shoot vines at pokeballs
 function shoot(e) {
   let currentVineShotIndex = pokeSpriteLocation;
@@ -184,7 +183,7 @@ function shoot(e) {
     }
  }
 
-  //spacebar to fire vines
+  //up key to shoot vines
   switch(e.keyCode) {
     case 38: {
     vineShotId = setInterval(shootVine, 100);
@@ -192,7 +191,7 @@ function shoot(e) {
     } 
 }
 
-// * reset variables
+// * -----------------------------------reset variables-----------------------------
 function resetGame() {
   clearInterval(vineShotId);
   clearInterval(pokeballId);
@@ -206,10 +205,3 @@ function resetGame() {
   });
   audio.pause();
 }
-//* ------------------------------------------------------------------
-//start / stop
-//multiple levels
-//audio
-//mute button 
-// score counter
-//readME
