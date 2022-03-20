@@ -1,4 +1,4 @@
-# Poké Dodge!
+# Poké Run!
 <img src="./assets/readme/pokedodgegameplay.gif" alt=" Project GIF" width="600" height="600">
 
 ## Concept
