@@ -3,7 +3,7 @@
   background-color: lightblue;
 }
 
-header { 
+header {
   display: flex;
   justify-content: space-between;
 }
@@ -50,7 +50,7 @@ section {
 }
 
 .results {
-  color: #FECA04;
+  color: #feca04;
   text-shadow: 0 0 5px blue;
   background-color: lightcoral;
 }
@@ -71,13 +71,14 @@ button {
   font-family: 'Rammetto One', cursive;
 }
 
-#start-game, #reset-game {
+#start-game,
+#reset-game {
   border-radius: 5px;
-  background-color: #FECA04;
+  background-color: #feca04;
 }
 
 /* audio button styling */
-#mute { 
+#mute {
   border-radius: 60px;
   background-color: lightseagreen;
 }
@@ -105,10 +106,9 @@ button {
   border: solid black 1px;
   border-radius: 10px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  /* margin: 20px auto auto 20px; */
   display: flex;
   flex-wrap: wrap;
-} 
+}
 
 .grid div {
   width: 40px;
@@ -127,22 +127,19 @@ button {
   height: 150px;
 }
 
-
 /* enemy pokeballs */
-.pokeball { 
-  background-image: url('../assets/gifs/rollingpokeball.gif');
+.pokeball {
+  background-image: url('./assets/gifs/rollingpokeball.gif');
   background-size: cover;
 }
 
 /* users pokemon */
 .pokeSprite {
-  background-image: url('../assets/gifs/bulbasaursprite.gif');
+  background-image: url('./assets/gifs/bulbasaursprite.gif');
   background-size: cover;
 }
 
 .vine {
-  background-image: url('../assets/design/razerleaf.png');
+  background-image: url('./assets/design/razerleaf.png');
   background-size: cover;
 }
-
-/* div class start screen display none then in JS startscree.onload = startscreens.style / const start */
