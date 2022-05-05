@@ -8,10 +8,6 @@ header {
   justify-content: space-between;
 }
 
-/* #poke-sprite-logo {
-  margin-right: 60px;
-} */
-
 /* pokemon logo image */
 #game-logo {
   margin: 20px auto;
@@ -55,7 +51,6 @@ section {
   background-color: lightcoral;
 }
 
-/* buttons container--find way to justify content to the center */
 .start-reset {
   display: flex;
   justify-content: space-evenly;
@@ -83,12 +78,6 @@ button {
   background-color: lightseagreen;
 }
 
-/* .music-stop {
-  display: flex;
-  justify-content: space-evenly;
-} */
-
-/* find way to anchor to the center and bottom of left side */
 /* container */
 .trainer-container {
   display: flex;
