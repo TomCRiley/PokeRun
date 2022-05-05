@@ -62,7 +62,6 @@ function init() {
 let pokeballPlacement = [...defaultPositions];
 
 function placePokeBalls() {
-  //place the enemy pokeballs
   for (let i = 0; i < pokeballPlacement.length; i++) {
     if (!destroyedPokeballs.includes(i)) {
       divs[pokeballPlacement[i]].classList.add('pokeball');
@@ -73,7 +72,6 @@ function placePokeBalls() {
 //* -------------!Function to remove pokeballs when one is shot!----------------------
 // remove pokeballs
 function remove() {
-  // console.log('removing pokeballs?', pokeballPlacement)
   divs.forEach((div) => div.classList.remove('pokeball'));
 }
 
@@ -106,7 +104,6 @@ function pokeballAttack() {
   //if last pokeball in array is far right column rightScreen is true.
   const rightScreen =
     pokeballPlacement[pokeballPlacement.length - 1] % width === width - 1;
-  // remove();
 
   if (rightScreen && goingRight) {
     for (let i = 0; i < pokeballPlacement.length; i++) {
@@ -154,11 +151,10 @@ function pokeballAttack() {
 }
 
 //* --------------------------------!SHOOT!--------------------------------
-//shoot vines at pokeballs
+
 function shoot(e) {
   let currentVineShotIndex = pokeSpriteLocation;
   function shootVine() {
-    //function to move the vine from one div to next
     if (currentVineShotIndex > 0) {
       divs[currentVineShotIndex].classList.remove('vine');
       currentVineShotIndex -= width;
