@@ -64,5 +64,15 @@ In my version of the game, there is a row of Pokemon at the bottom with what see
 With more time for the project, I would have developed a Pokemon picker that would let you choose your pokemon and then reveal the information about that Pokemon in the Pokédex. 
 ![Pokedex example](https://th.bing.com/th/id/R.0b735a03b878f77afbf7debc65d39968?rik=LJ8rbs68BEYrxA&riu=http%3a%2f%2ffc00.deviantart.net%2ffs70%2ff%2f2012%2f117%2f2%2f8%2fpokedex_entry_001_bulbasaur_by_kburnsf-d4xsm7o.png&ehk=bIZ3bQON9uschHOubpzQ2fboU3CoBSWcyaSS3fMDCeQ%3d&risl=&pid=ImgRaw&r=0)
 
+## Wins & Challenges
+This was an amazing learning experience. A bit like jumping off the ledge and into the deep end, but it fully immersed me in vanilla JavaScript and understanding the fundamentals of how a website works and renders content. 
+
+As it was my first time writing logic in JavaScript, there were of course some challenges. 
+* It was a struggle to know when it was best to use switch statements or if/else statements. It took some trial and error to find the clearest way of writing logic for the sprite movement.
+* This was a good way to wrap my head around CSS flexbox, but it was quite difficult to implement some of the styling. I found Chrome developer tools extremely helpful to iterate on CSS properties and get instant feedback.
 
 
+## More about me
+You can find me at www.tomriley.dev where I maintain all my live portfolio projects. You can also email me ➡️[📧(click me!)](mailto:hello@tomriley.dev)⬅️  
+
+I’m a junior software engineer with a whole lot of love for tech and learning. Connect with me on [LinkedIn](https://www.linkedin.com/in/tomcriley/)!
